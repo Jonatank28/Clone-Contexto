@@ -10,13 +10,10 @@ interface Props {
 const InputResponse = ({ word, currentWordAux }: Props) => {
     const mapIdToWidth = (id: number) => {
         const maxId = arrWords.length
-        console.log('🚀 ~ id:', id)
-
-        return ((maxId - id + 1) / maxId) * 100
+        return ((maxId - id) / (maxId - 1)) * 100
     }
 
     const wordId = word.id
-    console.log('🚀 ~ wordId:', wordId)
     const progressWidth = mapIdToWidth(wordId)
     console.log('🚀 ~ progressWidth:', progressWidth)
 
@@ -25,7 +22,7 @@ const InputResponse = ({ word, currentWordAux }: Props) => {
             ? 'red'
             : progressWidth >= 20 && progressWidth < 70
             ? 'orange'
-            : progressWidth >= 70 && progressWidth < 100
+            : progressWidth >= 70 && progressWidth <= 100
             ? 'green'
             : 'null'
 
@@ -42,7 +39,7 @@ const InputResponse = ({ word, currentWordAux }: Props) => {
                 <div
                     className="h-full relative px-2 py-4"
                     style={{
-                        width: `${progressWidth}%`,
+                        width: `${progressWidth < 0 ? 0 : progressWidth}%`,
                         background: `${progressColor}`,
                     }}
                 ></div>

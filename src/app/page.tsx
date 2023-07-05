@@ -59,7 +59,7 @@ export default function Home({}: Props) {
     }
 
     return (
-        <main className="bg-bg-primary h-screen w-screen">
+        <main className="bg-bg-primary h-screen w-screen overflow-x-hidden">
             <div className="w-[480px] mx-auto h-full">
                 <h1 className="text-2xl text-white font-extrabold text-center pt-5 uppercase">
                     John Context
